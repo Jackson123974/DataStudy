@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+{#{% load crm %}#}
+{% block content %}
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>帖子标题</th>
+            <th>帖子内容</th>
+            <th>删除帖子</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for row in teach_queryset %}
+            <tr>
+                <td>{{ row.title }}</td>
+                <td>{{ row.info }}</td>
+               <td>
+                    <a href="/data/deltie/{{ row.id }}" style="color: red;">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>删除
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="bot">
+        <nav aria-label="Page navigation">
+            <ul class="pagination pagination-lg"
+                style="float: right;margin-right: 50px;margin-top: 50px;">
+                {{ page_html|safe }}
+            </ul>
+        </nav>
+    </div>
+{% endblock %}
